@@ -4,12 +4,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const UserControllers_1 = __importDefault(require("../controllers/UserControllers"));
 const routes = express_1.default.Router();
-routes.get('/list', UserControllers_1.default.index);
+routes.get('/list', UserControllers.listar);
 // continuar aqui
-routes.get('/usuario/:id', User.Controller.listarId)
-routes.post('/usuario/idade', UserController.BuscarIdade)
-routes.post('/usuario/sexo', UserController.Buscarsexo)
-
+routes.get('/usuario/:id', UserControllers.listarId);
+routes.post('/usuario/idade', UserControllers.buscarIdade);
+routes.post('/usuario/sexo', UserControllers.buscarsexo);
 exports.default = routes;
