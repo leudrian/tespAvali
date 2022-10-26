@@ -8,4 +8,5 @@ const UserControllers_1 = __importDefault(require("../controllers/UserController
 const routes = express_1.default.Router();
 routes.get('/list', UserControllers_1.default.index);
 // continuar aqui
+
 exports.default = routes;
