@@ -7,14 +7,14 @@ const Users = require('../users.json');
 /**
  * Use o conteúdo da variável `Users` para desenvolver os métodos necessários
  */
-const userSchema = Yup().object().shape({
-    id: Yup.number().required(),
-    nome: Yup.string().required(),
-    sobrenome: Yup.string().required(),
-    sexo: Yup.string().required(),
-    idade: Yup.number().required()
+interface Usuario{
+    id: number,
+    nome: string,
+    sobrenome: string,
+    sexo: string;
+    idade: number;
 
-});
+};
 
 export default {
    /* // o conteúdo do controller vai aqui
@@ -61,11 +61,11 @@ export default {
    },
    buscarIdade(request: Request, response: Response){
     const {idade} = request.body;;
-    const resultado = Users.filter((usuario: Usuario) => usuario.idade == parseInt(id));
+    const resultado = Users.filter((usuario: Usuario) => usuario.idade > idade);
     if (resultado){
         return response.status(200).json(resultado);
     }
-    return response.status(400).json('usuario não encontrado')
+    return response.status(400).json({message:'Idade com usuario não encontrado'})
    },
    buscarSexo(request: Request, response: Response){
     const {sexo} = request.body;
@@ -73,7 +73,7 @@ export default {
     if (resultado){
         return response.status(200).json(resultado);
     }
-    return response.status(400).json('usuario não encontrado')
+    return response.status(400).json({message:'Sexo do usuario não encontrado'})
    }
 
 
